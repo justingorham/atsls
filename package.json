@@ -11,6 +11,10 @@
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.13.3",
     "@oclif/plugin-help": "^2.2.3",
+    "redux": "^4.0.5",
+    "redux-observable": "^1.2.0",
+    "rxjs": "^6.5.4",
+    "ts-action": "^11.0.0",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
