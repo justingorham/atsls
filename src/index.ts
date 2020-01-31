@@ -13,7 +13,7 @@ class JustingorhamAtsls extends Command {
     // flag with a value (-n, --name=VALUE)
     name: flags.string({char: 'n', description: 'name to print'}),
     // flag with no value (-f, --force)
-    force: flags.boolean({char: 'f'}),
+    force: flags.boolean({char: 'f', default: false}),
     skipGit: flags.boolean({description: 'skip git initialization (if not in version control)', default: false}),
   }
 
@@ -21,6 +21,7 @@ class JustingorhamAtsls extends Command {
     const {flags} = this.parse(JustingorhamAtsls)
     const start: StartCliPayload = {
       cwd: process.cwd(),
+      cliDir: __dirname,
       force: flags.force,
       skipGit: flags.skipGit,
     }
