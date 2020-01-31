@@ -2,7 +2,7 @@ import {applyMiddleware, compose, createStore} from 'redux'
 import {combineEpics, createEpicMiddleware} from 'redux-observable'
 import {EpicDependencies} from './custom-types'
 import * as Epics from './epics'
-import {logger} from './logger'
+import {logger} from './logger-middleware'
 import {stateReducer} from './reducer'
 
 const dependencies: EpicDependencies = {}
