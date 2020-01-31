@@ -1,4 +1,7 @@
 import {Command, flags} from '@oclif/command'
+import {StartCliPayload} from './app/custom-types'
+import {configureStore} from './app/store'
+import {startCli} from './app/actions'
 
 class JustingorhamAtsls extends Command {
   static description = 'describe the command here'
@@ -11,18 +14,25 @@ class JustingorhamAtsls extends Command {
     name: flags.string({char: 'n', description: 'name to print'}),
     // flag with no value (-f, --force)
     force: flags.boolean({char: 'f'}),
+    skipGit: flags.boolean({description: 'skip git initialization (if not in version control)', default: false}),
   }
 
-  static args = [{name: 'file'}]
-
   async run() {
-    const {args, flags} = this.parse(JustingorhamAtsls)
-
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from .\\src\\index.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
+    const {flags} = this.parse(JustingorhamAtsls)
+    const start: StartCliPayload = {
+      cwd: process.cwd(),
+      force: flags.force,
+      skipGit: flags.skipGit,
     }
+
+    const store = configureStore()
+    store.dispatch(startCli(start))
+
+    // const name = flags.name || 'world'
+    // this.log(`hello ${name} from .\\src\\index.ts`)
+    // if (args.file && flags.force) {
+    //   this.log(`you input --force and --file: ${args.file}`)
+    // }
   }
 }
 

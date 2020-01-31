@@ -1,7 +1,12 @@
 import {action, payload} from 'ts-action'
+import {StartCliPayload} from './custom-types'
 
-export const checkForGitInstalled = action('[Git] check for git installed')
+const cli = '[cli]'
+const git = '[Git]'
+
+export const checkForGitInstalled = action(`${git} check for git installed`)
 export const gitIsInstalled = action(
-  '[Git] is installed',
+  `${git} is installed`,
   payload<{ isInstalled: boolean }>()
 )
+export const startCli = action(`${cli} Start cli`, payload<StartCliPayload>())
