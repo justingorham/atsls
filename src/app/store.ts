@@ -4,8 +4,11 @@ import {EpicDependencies} from './custom-types'
 import * as Epics from './epics'
 import {logger} from './logger-middleware'
 import {stateReducer} from './reducer'
+import * as shell from 'shelljs'
 
-const dependencies: EpicDependencies = {}
+const dependencies: EpicDependencies = {
+  which: shell.which,
+}
 
 export const configureStore = () => {
   const epics = Object.keys(Epics).map(k => (Epics as any)[k])

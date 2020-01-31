@@ -1,3 +1,5 @@
+import {ShellString} from 'shelljs'
+
 export interface StartCliPayload {
   cwd: string;
   force: boolean;
@@ -5,5 +7,5 @@ export interface StartCliPayload {
 }
 
 export interface EpicDependencies {
-    foo?: string;
+    which: (command: string) => ShellString;
 }

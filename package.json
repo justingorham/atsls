@@ -14,12 +14,15 @@
     "redux": "^4.0.5",
     "redux-observable": "^1.2.0",
     "rxjs": "^6.5.4",
+    "shelljs": "^0.8.3",
     "ts-action": "^11.0.0",
+    "ts-action-operators": "^9.1.1",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
     "@types/node": "^10.17.14",
+    "@types/shelljs": "^0.8.6",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.1.0",
