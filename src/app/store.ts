@@ -1,10 +1,10 @@
 import {applyMiddleware, compose, createStore} from 'redux'
 import {combineEpics, createEpicMiddleware} from 'redux-observable'
+import * as shell from 'shelljs'
 import {EpicDependencies} from './custom-types'
 import * as Epics from './epics'
 import {logger} from './logger-middleware'
 import {stateReducer} from './reducer'
-import * as shell from 'shelljs'
 
 const dependencies: EpicDependencies = {
   which: shell.which,
@@ -18,7 +18,7 @@ export const configureStore = () => {
   })
   const store = createStore(
     stateReducer,
-    compose(applyMiddleware(epicMiddleware), applyMiddleware(logger))
+    compose(applyMiddleware(epicMiddleware), applyMiddleware(logger)),
   )
   epicMiddleware.run(rootEpic)
   return store
