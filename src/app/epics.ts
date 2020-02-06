@@ -18,11 +18,11 @@ type Epic = (
 
 export const start: Epic = actions$ => actions$.pipe(
   ofType(startCli),
-  mapTo(checkForGitInstalled())
+  mapTo(checkForGitInstalled()),
 )
 
 export const checkGitInstalled: Epic = (actions$, _, dependencies) => actions$.pipe(
   ofType(checkForGitInstalled),
   mapTo(dependencies.which('git')),
-  map(g => gitIsInstalled({isInstalled: Boolean(g)}))
+  map(g => gitIsInstalled({isInstalled: Boolean(g)})),
 )
